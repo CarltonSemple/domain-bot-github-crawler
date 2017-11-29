@@ -1,0 +1,27 @@
+apiVersion: batch/v2alpha1
+kind: CronJob
+metadata:
+  name: incubation-bot-crawler
+spec:
+  schedule: "0 6 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: incubation-bot-crawler
+            image: 
+            imagePullPolicy: Always
+            env:
+            - name: DISCOVERY_ENVIRONMENT_ID
+              value: 
+            - name: DISCOVERY_PASSWORD
+              value: 
+            - name: DISCOVERY_USERNAME
+              value: 
+            - name: GITHUB_ACCESS_TOKEN
+              value: 
+            - name: REPOSITORIES
+              value: '[{"owner": "istio", "name": "istio.github.io", "collection_id":"", "url":"https://github.com/istio/istio.github.io/tree/master"},{"owner": "kubernetes", "name": "website", "collection_id":"", "url":"https://github.com/kubernetes/website/tree/master/docs"},{"owner":"IBM-Bluemix-Docs","name":"containers","collection_id":"","url":"https://github.com/IBM-Bluemix-Docs/containers/tree/master"}]'
+            args:
+          restartPolicy: OnFailure
